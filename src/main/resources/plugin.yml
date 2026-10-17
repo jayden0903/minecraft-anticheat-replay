@@ -1,0 +1,22 @@
+name: RewindReplay
+version: 1.2.0
+main: io.github.jayden0903.replay.RewindReplay
+api-version: '26.2'
+folia-supported: true
+depend: [packetevents]
+softdepend: [CoreProtect]
+description: Always-on last-minute recording of every player and a staff-only in-game replay of the past world (players, mobs, blocks) for anticheat review
+commands:
+  replay:
+    aliases: [리플레이]
+    permission: rewindreplay.admin
+    description: 의심 플레이어 리플레이 (관리자) / staff replay
+    usage: /<command> [mark|list|view|summary|stop|status]
+  rewindreplay:
+    permission: rewindreplay.admin
+    description: Console/plugin entry (rewindreplay mark <player> <reason>)
+    usage: /<command> mark <player> <reason>
+permissions:
+  rewindreplay.admin:
+    description: Mark players, list, view and summarize clips
+    default: op

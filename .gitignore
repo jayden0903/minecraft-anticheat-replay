@@ -1,0 +1,18 @@
+# build output
+/build/
+*.class
+
+# compile classpath (see README, "Build"): jars are not committed
+/libs/*.jar
+
+# clips and plugin data from a server (only the synthetic sample is part of the repository)
+*.json.gz
+!/samples/synthetic-clip-v3.json.gz
+index.jsonl
+
+# tools
+__pycache__/
+.idea/
+*.iml
+.vscode/
+.DS_Store

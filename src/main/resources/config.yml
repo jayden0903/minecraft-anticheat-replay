@@ -1,0 +1,42 @@
+# RewindReplay. Changes apply after a restart.
+# History kept per online player (frames at client tick rate) and how long recording continues after a mark.
+buffer-seconds: 60
+after-seconds: 30
+# Extra frame slots for bursty connections (a timer cheat shortens the history instead of growing memory).
+frame-slack-percent: 25
+event-cap: 1024
+# Other players are included in a clip when they came this close to the suspect.
+nearby-radius: 32
+# A player who left can still be marked this long after quitting (e.g. a report that arrives after the fight).
+recent-quit-seconds: 120
+max-recent-quit: 40
+# Console/plugin marks (e.g. an anticheat's punishment command) for the same player inside this window are skipped.
+# Staff marks from /replay mark are never skipped. A mark while a clip is still recording adds its reason to that clip.
+console-cooldown-seconds: 120
+max-clips-per-hour: 60
+max-pending: 12
+# Retention: clips older than this are deleted, and the oldest go first above the size cap.
+retention-days: 30
+max-total-mb: 2048
+# Hidden-target metrics: line of sight on the owning region thread, a bounded number of rays per tick.
+line-of-sight:
+  enabled: true
+  max-candidates: 2400
+  per-tick: 150
+# Tell online staff when an automatic (console/plugin) mark has been saved.
+notify-staff-on-auto-mark: false
+# 1.2.0: the world around the players, so a replay shows the past and not today's world.
+# Mobs, dropped items, projectiles, boats/minecarts, TNT and falling blocks near each player (never players, armour stands,
+# item frames or displays), sampled on the player's own thread.
+entities:
+  enabled: true
+  radius: 24
+  interval-ticks: 2
+  max-per-sample: 32
+# Blocks as they were: CoreProtect's history around the suspect's path is read when a clip is opened (nothing extra is recorded).
+world-history:
+  enabled: true
+  radius: 48
+  max-blocks: 60000
+# While watching, the viewer does not see today's mobs and players (they come back when the replay ends).
+hide-live-entities: true
