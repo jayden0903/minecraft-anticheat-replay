@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0d14"/><stop offset="1" stop-color="#111827"/></linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.1" r="0.7"><stop offset="0" stop-color="#0ea5e9" stop-opacity="0.45"/><stop offset="1" stop-color="#0ea5e9" stop-opacity="0"/></radialGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/></pattern>
+  </defs>
+  <rect width="1280" height="320" rx="24" fill="url(#bg)"/>
+  <rect width="1280" height="320" rx="24" fill="url(#grid)"/>
+  <rect width="1280" height="320" rx="24" fill="url(#glow)"/>
+  <text x="80" y="100" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="22">jayden0903 / Paper · Folia 26.2</text>
+  <text x="78" y="190" fill="#ffffff" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="76" font-weight="800" letter-spacing="-2">RewindReplay</text>
+  <rect x="80" y="214" width="96" height="6" rx="3" fill="url(#ac)"/>
+  <text x="80" y="268" fill="#c9d1d9" font-family="-apple-system,'Segoe UI','Apple SD Gothic Neo','Malgun Gothic',Helvetica,Arial,sans-serif" font-size="28">See the suspect — and the world — as it was.</text>
+</svg>

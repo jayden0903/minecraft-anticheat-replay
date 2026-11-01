@@ -1,19 +1,42 @@
-# RewindReplay
+<!-- readme-v2 -->
+<p align="center"><img src=".github/banner.svg" alt="RewindReplay" width="100%"></p>
 
-An in-game anticheat replay for Paper/Folia 26.2: it keeps the last minute of every player in memory and lets staff
-watch a suspect again with the mobs and the blocks as they were at that moment, not as they are today.
+<p align="center"><img src="https://img.shields.io/badge/Paper-Folia_26.2-111827?style=flat-square" alt="Paper"> <img src="https://img.shields.io/badge/PacketEvents-2.14-111827?style=flat-square" alt="PacketEvents"> <img src="https://img.shields.io/badge/license-GPL--3.0-111827?style=flat-square" alt="license"> <a href="README.ko.md"><img src="https://img.shields.io/badge/README-한국어-111827?style=flat-square" alt="README"></a></p>
 
-Paper / Folia 26.2 · PacketEvents 2.14 · CoreProtect (optional) · Java 25 · GPL-3.0 · [한국어](README.ko.md)
+<p align="center">An in-game anticheat replay: the last minute of every player, replayed with <b>the mobs and blocks of that moment</b> — not today's world.</p>
+
+<table>
+<tr><td align="center" width="25%"><h3>60 s</h3><sub>of every player, always</sub></td><td align="center" width="25%"><h3>Then</h3><sub>blocks rebuilt from CoreProtect</sub></td><td align="center" width="25%"><h3>Packets</h3><sub>only the viewer sees it</sub></td><td align="center" width="25%"><h3>Fixed</h3><sub>memory per player</sub></td></tr>
+</table>
 
 | Today | Replay at 0:40 | Replay at 0:58 |
 |---|---|---|
 | ![Today's world](docs/images/today-world.png) | ![Replay at 40 seconds](docs/images/replay-0m40s.png) | ![Replay at 58 seconds](docs/images/replay-0m58s.png) |
 | The wall's top row is gone, four gold blocks, today's mobs (horses, slimes). | Before the mining: wall intact, the recorded pig, cow, burning zombie and dropped diamond. Today's mobs are hidden. | A hole in the wall and three gold blocks, as at the end of the clip. Changes made after the clip do not appear. |
 
+### Build
+
+```bash
+python3 build.py                       # -> build/RewindReplay.jar
+```
+
+### Details
+
+<details>
+<summary><b>Overview</b></summary>
+
+An in-game anticheat replay for Paper/Folia 26.2: it keeps the last minute of every player in memory and lets staff
+watch a suspect again with the mobs and the blocks as they were at that moment, not as they are today.
+
+
+
 Lab test with a real 26.2 client. During the clip a bot mined into the stone-brick wall and placed three gold blocks.
 After the clip it dug out the top row, placed a fourth gold block, and every mob was killed.
 
-## Why
+</details>
+
+<details>
+<summary><b>Why</b></summary>
 
 Watching a suspect after the fact has two problems.
 
@@ -27,7 +50,10 @@ Watching a suspect after the fact has two problems.
    CoreProtect's history and hides today's entities. Everything is sent as packets to the one viewer; the real world is
    never changed.
 
-## Features
+</details>
+
+<details>
+<summary><b>Features</b></summary>
 
 **Recording (always on)**
 - Last 60 s of every online player at client tick rate, read from packets by a PacketEvents MONITOR listener that never
@@ -75,7 +101,10 @@ Watching a suspect after the fact has two problems.
 *Paused 7 s after the mark: the boss bar shows clip time and offset from the mark, the action bar the suspect's exact
 yaw/pitch, rotation per tick, ground state and held item.*
 
-## How it works
+</details>
+
+<details>
+<summary><b>How it works</b></summary>
 
 ```
  client packets ──► PacketEvents MONITOR listener (netty threads) ──┐
@@ -184,7 +213,10 @@ minecarts, TNT and falling blocks. Entities the viewer already sees within 160 b
 start. At the end, entities still in tracking range are hidden and shown again through the Bukkit API so the server
 re-sends them; the rest come back when they re-enter range.
 
-## Measured cost
+</details>
+
+<details>
+<summary><b>Measured cost</b></summary>
 
 | What | Result | Setup |
 |---|---|---|
@@ -200,7 +232,10 @@ re-sends them; the rest come back when they re-enter range.
 | CoreProtect lookup when a clip is opened | 0.5 s: 5 lookups, 596 rows, 533 positions, 24 changes during the clip | a real mining clip against a copy of a production-size CoreProtect database |
 | Viewer warm-up at startup | 0.4-0.6 s, once, on the io thread | lab |
 
-## Tests
+</details>
+
+<details>
+<summary><b>Tests</b></summary>
 
 **Offline verifier** (`python3 build.py test`, no server needed): ring buffers and concurrent copies, flood guard,
 bit-exact clip round trip, synthetic aimbot / human / triggerbot / silent-aura / ESP suspects, equipment and pose
@@ -281,7 +316,10 @@ server; real 26.2 clients, 1.21.11 and 26.3 clients through ViaVersion, mineflay
 
 Versions 1.0 and 1.1 have run on a live survival server; 1.2.0 was verified on the lab server.
 
-## Limits
+</details>
+
+<details>
+<summary><b>Limits</b></summary>
 
 - **Evidence, not a verdict.** Nothing is kicked or banned. The thresholds (for example 10 blocks/s for over 1 s for the
   flight flag, 30° for a snap) were chosen in the lab without a baseline of human play; always watch the clip.
@@ -307,7 +345,10 @@ Versions 1.0 and 1.1 have run on a live survival server; 1.2.0 was verified on t
 - Tested in game on Folia 26.2. It compiles against the public Paper API 26.2 but has not been run on a non-Folia Paper
   server.
 
-## Requirements
+</details>
+
+<details>
+<summary><b>Requirements</b></summary>
 
 - Paper or Folia 26.2 (the plugin uses only the Paper API and declares `folia-supported: true`)
 - [PacketEvents](https://github.com/retrooper/packetevents) 2.14 installed as a plugin (required)
@@ -315,7 +356,10 @@ Versions 1.0 and 1.1 have run on a live survival server; 1.2.0 was verified on t
   today's state). Verified with CoreProtect 24.0.
 - JDK 25 to build
 
-## Build
+</details>
+
+<details>
+<summary><b>Build</b></summary>
 
 The build is a single Python script that calls `javac` and `jar`; no Gradle or Maven is needed. It needs these jars on
 the compile classpath (the versions the build was verified with; other 26.2 builds should work):
@@ -350,7 +394,10 @@ python3 build.py test                  # offline verifier, same classpath option
 The JDK is taken from `--jdk`, `JAVA_HOME` or `PATH`. The script checks the classpath before compiling and names any
 missing API.
 
-## Install
+</details>
+
+<details>
+<summary><b>Install</b></summary>
 
 1. Install PacketEvents (and CoreProtect if you want historical blocks).
 2. Copy `build/RewindReplay.jar` into `plugins/` and restart the server (do not use `/reload`).
@@ -362,7 +409,10 @@ missing API.
      - "15:15 rewindreplay mark %player% Grim Combat VL %vl%"
    ```
 
-## Commands
+</details>
+
+<details>
+<summary><b>Commands</b></summary>
 
 Permission `rewindreplay.admin` (default: op). Sub-commands work in English and Korean under both `/replay` and
 `/리플레이`.
@@ -382,7 +432,10 @@ Permission `rewindreplay.admin` (default: op). Sub-commands work in English and 
 Marks from the console or other plugins share a per-player cooldown and an hourly cap; marks typed by staff are never
 skipped. Messages and chat buttons are in Korean.
 
-## Configuration
+</details>
+
+<details>
+<summary><b>Configuration</b></summary>
 
 `plugins/RewindReplay/config.yml`; changes apply after a restart.
 
@@ -413,7 +466,10 @@ skipped. Messages and chat buttons are in Korean.
 | `world-history.max-blocks` | 60000 | Positions kept at most (nearest the path) |
 | `hide-live-entities` | true | Hide today's mobs and players while watching |
 
-## Project layout
+</details>
+
+<details>
+<summary><b>Project layout</b></summary>
 
 ```
 build.py                               build and test script (javac + jar)
@@ -434,6 +490,14 @@ lab/scenario.js                        bot scenario used for the screenshots
 docs/images/                           screenshots
 ```
 
-## License
+</details>
+
+<details>
+<summary><b>License</b></summary>
 
 GPL-3.0, see [LICENSE](LICENSE). PacketEvents is GPL-3.0 as well; CoreProtect is used only through its public API.
+
+</details>
+
+
+<p align="center"><sub>Made by <a href="https://github.com/jayden0903">jayden0903</a></sub></p>
