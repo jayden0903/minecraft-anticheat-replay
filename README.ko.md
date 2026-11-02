@@ -13,6 +13,20 @@ Paper / Folia 26.2 · PacketEvents 2.14 · CoreProtect(선택) · Java 25 · GPL
 실제 26.2 클라이언트로 찍은 실험 화면입니다. 클립 동안 봇이 돌벽돌 벽을 캐고 금 블록 3개를 놓았고, 클립이 끝난 뒤에
 벽 윗줄을 더 캐고 금 블록 하나를 더 놓은 다음 몹을 모두 없앴습니다.
 
+## 설치
+
+1. [Releases](https://github.com/jayden0903/minecraft-anticheat-replay/releases/latest)에서 **RewindReplay-1.2.0.jar**를 받습니다.
+2. [PacketEvents](https://modrinth.com/plugin/packetevents) 2.14 이상(필수)과 같이 `plugins/`에 넣습니다. [CoreProtect](https://modrinth.com/plugin/coreprotect)가 있으면 그때의 블록까지 보입니다(선택).
+3. 서버를 재시작합니다.
+
+```
+/리플레이 기록 <플레이어>    지난 60초(+다음 30초) 저장
+/리플레이 목록              최근 클립
+/리플레이 보기 <id>         게임 안에서 보기(나만 보임)
+```
+
+Paper 또는 Folia 26.2 이상, Java 25.
+
 ## 왜 만들었나
 
 지나간 일을 다시 보는 데는 두 가지 문제가 있습니다.

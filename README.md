@@ -14,11 +14,27 @@
 | ![Today's world](docs/images/today-world.png) | ![Replay at 40 seconds](docs/images/replay-0m40s.png) | ![Replay at 58 seconds](docs/images/replay-0m58s.png) |
 | The wall's top row is gone, four gold blocks, today's mobs (horses, slimes). | Before the mining: wall intact, the recorded pig, cow, burning zombie and dropped diamond. Today's mobs are hidden. | A hole in the wall and three gold blocks, as at the end of the clip. Changes made after the clip do not appear. |
 
-### Build
+### Install
+
+1. Download **RewindReplay-1.2.0.jar** from [Releases](https://github.com/jayden0903/minecraft-anticheat-replay/releases/latest).
+2. Put it in `plugins/` together with [PacketEvents](https://modrinth.com/plugin/packetevents) 2.14+ (required). [CoreProtect](https://modrinth.com/plugin/coreprotect) is optional and adds the blocks of that moment.
+3. Restart the server.
+
+```
+/replay mark <player>     save the last 60 s (and the next 30 s)
+/replay list              newest clips
+/replay view <id>         watch it in game, only you see it
+```
+
+Paper or Folia 26.2+, Java 25.
+
+<details><summary>Build from source</summary>
 
 ```bash
 python3 build.py                       # -> build/RewindReplay.jar
 ```
+
+</details>
 
 ### Details
 
